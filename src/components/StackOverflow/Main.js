@@ -10,7 +10,7 @@ function Main() {
         <div className='main-conteiner'>
             <div className='main-top'>
                 <h2>All Questions</h2>
-                <Link>
+                <Link to= '/add-question'>
                     <button>Ask Question</button>
                 </Link>
             </div>
