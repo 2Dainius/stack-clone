@@ -3,9 +3,15 @@ import './css/Header.css';
 import InboxIcon from '@mui/icons-material/Inbox';
 import SearchIcon from '@mui/icons-material/Search';
 import { Avatar } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../features/userSlice';
+import { auth } from '../../firebase';
+//import { signOut } from 'firebase/auth';
 
 function Header() {
+    const user = useSelector(selectUser);
+    const history = useHistory()
   return (<header>
     <div className='header-container'>
         <div className='header-left'>
@@ -22,11 +28,16 @@ function Header() {
         </div>
         <div className='header-right'>
             <div className='header-right-container'>
-                <Avatar />
+                <span onClick={() => {
+                    auth.signOut()
+                    history.push('/auth')
+                }}>
+                    <Avatar src = {user?.photo}/>
+                </span>
                 <InboxIcon />
                 <svg
                     aria-hidden="true"
-                    class="svg-icon iconStackExchange"
+                    className="svg-icon iconStackExchange"
                     width="24"
                     height="24"
                     viewBox="0 0 18 18"
