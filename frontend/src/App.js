@@ -52,9 +52,9 @@ function App() {
         <Header />
         <Switch>
           <Route exact path ='/auth' component={Auth} />
-          <Route exact path="/add-question" component = {Question} />
-          <Route exact path="/question" component = {ViewQuestion} />
-          <Route exact path="/" component = {StackOverflow} />
+          <PrivateRoute exact path="/add-question" component = {Question} />
+          <PrivateRoute exact path="/question" component = {ViewQuestion} />
+          <PrivateRoute exact path="/" component = {StackOverflow} />
         </Switch>
       </Router>
     </div>
